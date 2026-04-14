@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 func conditionals() {
 	messageLen := 10
@@ -15,6 +18,14 @@ func conditionals() {
 	}
 }
 
+func initialStatement() {
+	email := "hi@me.com"
+	if length := utf8.RuneCountInString(email); length < 10 {
+		fmt.Printf("Email must be at least 10 characters , it is %d\n", length)
+	}
+}
+
 func main() {
-	conditionals()
+	// conditionals()
+	initialStatement()
 }
