@@ -50,8 +50,32 @@ func switchStatement() {
 	fmt.Printf("The cost for a %s plan is $%.2f\n", plan, billingCost(plan))
 }
 
+func calculateBalance() {
+	var insufficientFundMessage string = "Purchase failed. Insufficient funds."
+	var purchaseSuccessMessage string = "Purchase successful."
+	var accountBalance float64 = 100.0
+	var bulkMessageCost float64 = 75.0
+	var isPremiumUser bool = true
+	var discountRate float64 = 0.10
+	var finalCost float64 = bulkMessageCost
+
+	if isPremiumUser {
+		finalCost *= 1 - discountRate
+	}
+
+	if accountBalance >= finalCost {
+		accountBalance -= finalCost
+		fmt.Printf(purchaseSuccessMessage)
+	} else {
+		fmt.Printf(insufficientFundMessage)
+	}
+
+	fmt.Println("Account balance:", accountBalance)
+}
+
 func main() {
 	// conditionals()
 	// initialStatement()
-	switchStatement()
+	// switchStatement()
+	calculateBalance()
 }
